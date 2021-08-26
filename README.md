@@ -4,7 +4,7 @@
 রিভার্স ইঞ্জিনেরিং এ অনেক ধরনের টুলস ইউস করা হয়, লিনাক্স বাইনারি ক্রেক করার জন্য Ghidra, gdb, IDA, Cutter etc. তবে লিনাক্স এর ক্ষেত্রে ফেভারিট টুল হলো Cutter. আর Windows এর ক্ষেত্রে DNSpy. android এর ক্ষেত্রে show java. আমি সাইবার ড্রীল এর প্রবলেম দুটো CUtter সফটওয়্যার দিয়ে করেছি। এখানে ইউনিভার্সিটি সাইবার ড্রিল ২০২১ এ আমার রিভার্স ইঞ্জিনেরিং করার টেকনিক গুলো শেয়ার করবো।
 আশা করি আমার লেখা পরে রিভার্স ইঞ্জিনিয়ারিং সম্পর্কে ধারনা নিতে পারবেন। যদিও এটা বিগিনার গাইড না। 
 
-#### Terminator : 100
+### Terminator : 100
 Don't come with me if you want to live.
 
 Please find the flag from the attached [file](/lib/TERMINATOR).
@@ -43,5 +43,29 @@ cyber_drill2021_main() ফাংশন এর কোড নিম্নরুপ
 ![১.৭](/lib/1.7.png)
 
 Flag: `7e5671326f1c4b80cfb75134471eb2`
+
+### Reversing enrich your knowledge. : 100
+In information theory, the entropy of a random variable is the average level of "information", "surprise", or "uncertainty" inherent in the variable's possible outcomes. Generally the degree of disorder or uncertainty in a system make it easier to sense.
+
+Extract the flag from the attached [file](/lib/ENTROPY)
+
+এই প্রবলেমটার ক্ষেত্রে প্রথমেই আমি cutter টুল দিয়ে ওপেন করে মেইন ফাংশন টা দেখি দে আরেকটা ফাংশন কে কল করতেছে। যার নাম _dl_setup_hash() যা this one is too easy প্রিন্ট করে।
+
+![২.১](/lib/2.1.png)
+
+তারপর আমি _dl_setup_hash() ফাংশন নিয়ে কিছুক্ষন ঘাটাঘাটি করে বুঝতে পারি ফাংশন টি this one is too easy ইনপুট নিয়ে ঘুরিয়ে পেচিয়ে আবার সেটাকেই আবার প্রিন্ট করে ।
+
+![2.2](/lib/2.2.png)
+
+তারপর অন্যান্য ফাংশন গুলো নিয়ে ঘাটাঘাটি কঅরতে গিয়ে দেখলাম শত শত ফাংশন এখানে। তাই ভেবেছিলাম যে এইগুলু কোনো ফাংশন ঈর ভিতরেই আছে আমার ফ্লাগ বের করার ফাংশন । তাই আমি python এ কোড লিখে সব গুলো ফাংশন এক্সিকিউট করার ট্রাই করি কিন্তু কোনো ফ্লাগ পাই নাই। বিভিন্ন ERROR show করা শুরু করে।
+
+![২.৩](/lib/2.3.png)
+
+তারপর আমি তাদের দেয়া হিন্ট পরে চিন্তা করে ধারনা করি যে ফ্লাগ টি কোনো ইনফরমেশন আকারে আছে। তাই আমি string গুলো দেখার ট্রাই করি। সেখানে ৯৬১১ টী স্ট্রিং ছিলো। আমি length অনুযায়ি ফিল্টার করে একটা HASH পাই । আগের ফ্লাগ এর অভিজ্ঞতা অনুযায়ি বুঝতে পারি এইটাই ফ্ল্যাগ। 
+
+![2.4](/lib/2.4.png)
+
+
+Flag: `d8a418ea9e3029b15642429e20028fed`
 
 
