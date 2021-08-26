@@ -49,6 +49,8 @@ In information theory, the entropy of a random variable is the average level of 
 
 Extract the flag from the attached [file](/lib/ENTROPY)
 
+## solution
+
 এই প্রবলেমটার ক্ষেত্রে প্রথমেই আমি cutter টুল দিয়ে ওপেন করে মেইন ফাংশন টা দেখি দে আরেকটা ফাংশন কে কল করতেছে। যার নাম _dl_setup_hash() যা this one is too easy প্রিন্ট করে।
 
 ![২.১](/lib/2.1.png)
